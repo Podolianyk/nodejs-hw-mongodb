@@ -58,7 +58,6 @@ export const updateContact = async (
     payload,
     { new: true, includeResultMetadata: true, ...options },
   );
-  console.log(`rawResult: ${rawResult}`);
 
   if (!rawResult || !rawResult.value) return null;
 
@@ -69,5 +68,8 @@ export const updateContact = async (
 };
 
 export const deleteContact = (contactId, userId) => {
-  ContactsCollection.findOneAndDelete({ _id: contactId, userId: userId });
+  return ContactsCollection.findOneAndDelete({
+    _id: contactId,
+    userId: userId,
+  });
 };
