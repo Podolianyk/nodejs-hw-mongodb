@@ -1,0 +1,83 @@
+tags:
+  - Contacts
+summary: Create contact
+operationId: createContact
+description: 'Create a contact with payload'
+security:
+  - bearerAuth: []
+requestBody:
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        required:
+          - name
+          - phoneNumber
+          - contactType
+        properties:
+          _id:
+            description: 'The unique identifier of the contact'
+            type: string
+            example: '66be276eed3fff6781dc8af9'
+          name:
+            description: "Contact's name"
+            type: string
+            example: 'Ivan'
+          phoneNumber:
+            description: "Contact's phone"
+            type: string
+            example: '0000000000'
+          email:
+            description: "Contact's email"
+            type: string
+            example: 'test@gmail.com'
+          isFavourite:
+            description: 'Indicates whether the contact is marked as a favorite'
+            type: boolean
+            example: true
+          contactType:
+            description: 'Specifies the type of contact, indicating whether it is for work, home, or personal purposes'
+            type: string
+            enum: ['work', 'home', 'personal']
+            example: 'work'
+          userId:
+            description: 'The unique identifier of the user who owns this contact'
+            type: string
+            example: '66b5e364238a937758d83ee7'
+          photo:
+            description: "Contact's photo"
+            type: string
+            example: 'https://res.cloudinary.com/dzhzzgne2/image/upload/v1723829015/hotz2eqz…'
+          createdAt:
+            description: The date and time when the contact was created
+            type: string
+            format: date-time
+            example: '2023-01-01T00:00:00.000Z'
+          updatedAt:
+            description: The date and time when the contact was last updated
+            type: string
+            format: date-time
+            example: '2023-01-01T00:00:00.000Z'
+responses:
+  '201':
+    description: Creates a contact
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 201
+            message:
+              type: string
+              example: Successfully created a contact!
+            data:
+              type: object
+              $ref: '../../components/schemas/contact.yaml'
+  '401':
+    $ref: '../../components/responses/401.yaml'
