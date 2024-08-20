@@ -58,11 +58,12 @@ export const updateContact = async (
     payload,
     { new: true, includeResultMetadata: true, ...options },
   );
+  console.log(`rawResult: ${rawResult}`);
 
   if (!rawResult || !rawResult.value) return null;
 
   return {
-    student: rawResult.value,
+    contact: rawResult.value,
     isNew: Boolean(rawResult?.lastErrorObject?.upserted),
   };
 };
