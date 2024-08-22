@@ -13,7 +13,7 @@ tags:
     description: Auth operations.
 servers:
   - url: http://localhost:3000
-  - url: https://example.com/api/v1
+  - url: https://contacts-app-c75m.onrender.com
 paths:
   /contacts/{id}:
     get:
@@ -48,9 +48,9 @@ paths:
   /auth/confirm-oauth:
     post:
       $ref: ../swagger/paths/auth/confirm-oauth/post.yaml
-  /auth/oauth-url:
+  /auth/get-oauth-url:
     get:
-      $ref: ../swagger/paths/auth/oauth-url/get.yaml
+      $ref: ../swagger/paths/auth/get-oauth-url/get.yaml
 components:
   securitySchemes:
     bearerAuth:

@@ -14,7 +14,7 @@
       "url": "http://localhost:3000"
     },
     {
-      "url": "https://example.com/api/v1"
+      "url": "https://contacts-app-c75m.onrender.com"
     }
   ],
   "tags": [
@@ -972,7 +972,7 @@
         }
       }
     },
-    "/auth/oauth-url": {
+    "/auth/get-oauth-url": {
       "get": {
         "tags": [
           "Auth"
