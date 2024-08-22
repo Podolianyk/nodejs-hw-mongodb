@@ -1,0 +1,47 @@
+tags:
+  - Auth
+summary: Resets pwd
+operationId: resetPassword
+description: 'This endpoint resets pwd'
+security: []
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - token
+          - password
+        properties:
+          token:
+            type: string
+            description: A JSON Web Token (JWT) used to authenticate the user.
+            example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NmI1ZTM2NDIzOGE5Mzc3NThkODNlZTciLCJlbWFpbCI6InBvZG9saWFuaWsxOTg4QGdtYWlsLmNvbSIsImlhdCI6MTcyNDE3NzExNSwiZXhwIjoxNzI0MTc3NDE1fQ.4UKVVELdzVOVpUYkIOTRPqRQvG1Eheh3QK80GkdZGLc
+          password:
+            type: string
+            description: New user's password
+            example: myPassword124
+responses:
+  '200':
+    description: 'Password has been successfully reset.'
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Password has been successfully reset.
+            data:
+              type: object
+              example: {}
+  '401':
+    $ref: '../../../components/responses/401.yaml'

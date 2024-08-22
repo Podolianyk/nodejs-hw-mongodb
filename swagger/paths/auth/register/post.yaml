@@ -1,0 +1,74 @@
+tags:
+  - Auth
+summary: Register a new user
+operationId: registerUser
+description: 'This endpoint registers a new user with a name, email and password.'
+security: []
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - name
+          - email
+          - password
+        properties:
+          name:
+            type: string
+            description: User's name
+            example: Irina
+          email:
+            type: string
+            description: User's email address
+            example: irina.polyanska@example.com
+          password:
+            type: string
+            description: User's password
+            example: myPassword123
+responses:
+  '201':
+    description: 'Successfully registered a user!'
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 201
+            message:
+              type: string
+              example: Successfully registered a user!
+            data:
+              type: object
+              properties:
+                _id:
+                  description: 'The unique identifier of the contact'
+                  type: string
+                  example: '66be276eed3fff6781dc8af9'
+                name:
+                  description: "Contact's name"
+                  type: string
+                  example: 'Irina'
+                email:
+                  description: "Contact's email"
+                  type: string
+                  example: 'irina.polyanska@example.com'
+                createdAt:
+                  description: The date and time when the contact was created
+                  type: string
+                  format: date-time
+                  example: '2023-01-01T00:00:00.000Z'
+                updatedAt:
+                  description: The date and time when the contact was last updated
+                  type: string
+                  format: date-time
+                  example: '2023-01-01T00:00:00.000Z'
+  '409':
+    $ref: '../../../components/responses/409.yaml'

@@ -1,0 +1,33 @@
+tags:
+  - Auth
+summary: Get Google authentication URL
+operationId: generateAuthUrl
+description: 'Generates and returns the Google OAuth 2.0 authentication URL'
+security: []
+responses:
+  '200':
+    description: 'Successfully get Google OAuth url!'
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfully get Google OAuth url!
+            data:
+              type: object
+              properties:
+                url:
+                  description: The generated Google OAuth 2.0 authentication URL.
+                  type: string
+                  example: https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&response_type=code&client_id=523970701910-qptvinekkp8569c507q9pkeuiimf7574.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fconfirm-google-auth
+  '401':
+    $ref: '../../../components/responses/401.yaml'

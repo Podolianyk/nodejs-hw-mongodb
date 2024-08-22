@@ -1,0 +1,51 @@
+tags:
+  - Auth
+summary: Login a user
+operationId: loginUser
+description: 'This endpoint logins a user with an email and a password.'
+security: []
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - email
+          - password
+        properties:
+          email:
+            type: string
+            description: User's email address
+            example: irina.polyanska@example.com
+          password:
+            type: string
+            description: User's password
+            example: myPassword123
+responses:
+  '200':
+    description: 'Successfully logged in an user'
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfully logged in an user
+            data:
+              type: object
+              properties:
+                accessToken:
+                  description: "A token that grants access to the user's authenticated sessions."
+                  type: string
+                  example: 'elBvQWdnQ85pHxJlo/yU3HAZxgysyA1eNYFSFWSw'
+  '401':
+    $ref: '../../../components/responses/401.yaml'
